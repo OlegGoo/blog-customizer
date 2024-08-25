@@ -11,6 +11,7 @@
 	background-color: #000000;
 	border-right: 1px;
 	transition: transform 0.5s ease;
+	cursor: pointer;
 }
 
 .container_open {
@@ -27,4 +28,12 @@
 
 .arrow_open {
 	transform: rotate(0deg);
+}
+
+.container:hover {
+	background: #ffc802;
+}
+
+.container:active {
+	background: #787878;
 }
