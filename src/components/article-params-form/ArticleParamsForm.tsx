@@ -1,7 +1,7 @@
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import styles from './ArticleParamsForm.module.scss';
-import { useState, useRef, SyntheticEvent } from 'react';
+import { useState, useRef, FormEvent, SyntheticEvent } from 'react';
 import clsx from 'clsx';
 import { Select } from '../select';
 import {
@@ -35,14 +35,14 @@ export const ArticleParamsForm = ({articleState, setArticleState}: ArticleParams
 		rootRef: formRef,
 	});
 
-	const formVisibility = () => {
+	const setMenuVisibility = () => {
 		setMenuOpen(!menuOpen);
 	};
 
-	const handleSubmit = (e: SyntheticEvent) => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setArticleState(params);
-		formVisibility();
+		setMenuVisibility();
 	};
 
 	const handleResetParams = (e: SyntheticEvent) => {
@@ -59,7 +59,7 @@ export const ArticleParamsForm = ({articleState, setArticleState}: ArticleParams
 
 	return (
 		<>
-			<ArrowButton onClick={formVisibility} isOpen={menuOpen} />
+			<ArrowButton onClick={setMenuVisibility} isOpen={menuOpen} />
 			<aside
 				className={clsx(styles.container, menuOpen && styles.container_open)}>
 				<form

@@ -8,6 +8,7 @@ type TUseClose = {
 
 export const useClose = ({ isOpen, onclose, rootRef }: TUseClose) => {
 	useEffect(() => {
+		if (!isOpen) return;
 		const handleOutsideClick = (event: MouseEvent) => {
 			const { target } = event;
 			if (target instanceof Node && !rootRef.current?.contains(target)) {
